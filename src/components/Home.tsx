@@ -29,7 +29,7 @@ class Home extends React.Component<ComposedProps,State> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.appTitle}>Art Search</Text>
+        <Text style={styles.appTitle}>🖼 Art Search 🖌</Text>
         <TextInput 
           style={styles.search}
           value={this.state.search}
@@ -47,19 +47,24 @@ class Home extends React.Component<ComposedProps,State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#EEEEEE',
     alignItems: 'center',
     justifyContent: 'center',
   },
   appTitle: {
     fontSize: 35,
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    marginBottom: 25
   },
   search: {
     fontSize: 30,
     borderStyle: 'solid',
     borderWidth: 1,
-    width: '50%'
+    width: '80%',
+    textAlign: 'center',
+    borderRadius: 10,
+    marginBottom: 25,
+    padding: 10
   }
 });
 

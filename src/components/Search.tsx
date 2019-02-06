@@ -1,18 +1,12 @@
 import React from 'react';
-import {View,Text} from 'react-native';
+import {View,Text,StyleSheet,ScrollView} from 'react-native';
 import {NavigationScreenProps} from 'react-navigation';
+import {ArtObject} from '../utilities/types';
+import SingleArt from './SingleArt';
 
 interface Props {}
 
 type ComposedProps = Props & NavigationScreenProps
-
-interface ArtObject {
-  id: string;
-  title: string;
-  webImage: {
-    url: string;
-  };
-}
 
 interface State {
   searchResults: ArtObject[]
@@ -36,15 +30,24 @@ class Search extends React.Component<ComposedProps,State> {
     const {searchResults} = this.state;
     return (
       <View>
-        <Text>Search: {search}</Text>
-        {searchResults.map((art: ArtObject) => {
-          return (
-            <Text key={art.id}>{art.title}</Text>
-          )
-        })}
+        <Text style={styles.searchTitle}>Search Results for: {search}</Text>
+        <ScrollView>
+          {searchResults
+            .filter((art: ArtObject) => art.hasImage)
+            .map((art: ArtObject) => <SingleArt key={art.id} {...art}/>)}
+        </ScrollView>
       </View>
     )
   }
 }
 
+const styles = StyleSheet.create({
+  searchTitle: {
+    padding: 10,
+    fontSize: 15,
+    fontWeight: 'bold'
+  }
+});
+
 export default Search;
+
