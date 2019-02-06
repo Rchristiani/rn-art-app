@@ -29,7 +29,7 @@ class Search extends React.Component<ComposedProps,State> {
     const search = this.props.navigation.getParam('search');
     const {searchResults} = this.state;
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.searchTitle}>Search Results for: {search}</Text>
         <ScrollView>
           {searchResults
@@ -42,6 +42,10 @@ class Search extends React.Component<ComposedProps,State> {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FF8A80',
+    flex: 1
+  },
   searchTitle: {
     padding: 10,
     fontSize: 15,

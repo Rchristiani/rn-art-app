@@ -14,7 +14,7 @@ const SingleArt = (props: ArtObject) => {
         }}
       />
       <View style={styles.textContainer}>
-        <Text>{title}</Text>
+        <Text style={styles.title}>{title}</Text>
         <Text>{principalOrFirstMaker}</Text>
       </View>
     </View>
@@ -23,13 +23,21 @@ const SingleArt = (props: ArtObject) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#CFD8DC",
+    backgroundColor: "#FAFAFA",
     margin: 10,
     padding: 15,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    borderRadius: 5
   },
   textContainer: {
-    marginLeft: 15
+    marginLeft: 15,
+    flexDirection: 'column',
+    flex: 1
+  },
+  title: {
+    fontWeight: 'bold',
+    flexShrink: 1,
+    marginBottom: 10
   }
 })
 

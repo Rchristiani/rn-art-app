@@ -29,15 +29,17 @@ class Home extends React.Component<ComposedProps,State> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.appTitle}>🖼 Art Search 🖌</Text>
+        <Text style={styles.appTitle}>Art!!</Text>
         <TextInput 
           style={styles.search}
           value={this.state.search}
           onChangeText={this.handleTextChange}
+          onSubmitEditing={this.search}
         />
         <Button 
           title="Search"
           onPress={this.search}
+          color='white'
         />
       </View>
     )
@@ -47,19 +49,23 @@ class Home extends React.Component<ComposedProps,State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#EEEEEE',
+    backgroundColor: '#FF5252',
     alignItems: 'center',
     justifyContent: 'center',
   },
   appTitle: {
     fontSize: 35,
+    fontWeight:'bold',
     textTransform: 'uppercase',
-    marginBottom: 25
+    marginBottom: 25,
+    color: 'white'
   },
   search: {
     fontSize: 30,
     borderStyle: 'solid',
     borderWidth: 1,
+    borderColor: 'white',
+    color: 'white',
     width: '80%',
     textAlign: 'center',
     borderRadius: 10,
