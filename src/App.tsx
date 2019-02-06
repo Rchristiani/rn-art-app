@@ -1,5 +1,5 @@
-import Home from './components/Home';
-import Search from './components/Search';
+import Home from './screens/Home';
+import SearchResults from './screens/SearchResults';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
 
@@ -8,7 +8,7 @@ const AppNavigation = createStackNavigator({
     screen: Home
   },
   Search: {
-    screen: Search
+    screen: SearchResults
   }
 });
 

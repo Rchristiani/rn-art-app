@@ -2,7 +2,7 @@ import React from 'react';
 import {View,Text,StyleSheet,ScrollView} from 'react-native';
 import {NavigationScreenProps} from 'react-navigation';
 import {ArtObject} from '../utilities/types';
-import SingleArt from './SingleArt';
+import SingleArt from '../components/SingleArt';
 
 interface Props {}
 
