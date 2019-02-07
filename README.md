@@ -480,21 +480,21 @@ We can then use these styles in our render, the render method should now look li
 ```diff
 render() {
   return (
-- 	<View>
-+		<View style={styles.container}>
--			<Text>Art!!</Text>
-+			<Text style={styles.appTitle}>Art!!</Text>
-        <TextInput 
-+		      style={styles.search}
-          value={this.state.search}
-          onChangeText={this.handleTextChange}
-          onSubmitEditing={this.search}
-        />
-        <Button 
-          title="Search"
-          onPress={this.search}
-          color='white'
-        />
+-   <View>
++   <View style={styles.container}>
+-     <Text>Art!!</Text>
++     <Text style={styles.appTitle}>Art!!</Text>
+      <TextInput 
++         style={styles.search}
+        value={this.state.search}
+        onChangeText={this.handleTextChange}
+        onSubmitEditing={this.search}
+      />
+      <Button 
+        title="Search"
+        onPress={this.search}
+        color='white'
+      />
     </View>
   )
 }
@@ -535,7 +535,7 @@ We now need to change two things in our code.
 
 ```diff
 - class Home extends React.Component<Props,State> {
-+	class Home extends React.Component<ComposedProps,State> {
++ class Home extends React.Component<ComposedProps,State> {
 
 - constructor(props: Props)
 + constructor(props: ComposedProps)
