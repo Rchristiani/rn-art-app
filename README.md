@@ -6,11 +6,11 @@ What will we go over today?
 * What is React
 * What is TypeScript
 * React Basics
-	* props
-	* state
-	* lifecycles
-	* Simple and complex components
-	
+  * props
+  * state
+  * lifecycles
+  * Simple and complex components
+  
 
 We will be doing all of this in the context of React Native, as we build a small app that allows us to search for art! We will use the Rijksmuseum API since it is free and extremely easy to use.
 
@@ -26,11 +26,11 @@ React is a JavaScript library that allow us to build component based application
 
 ```javascript
 const App = () => {
-	return (
-		<div>
-			<h1>Hi!!</h1>
-		</div>	
-	)
+  return (
+    <div>
+      <h1>Hi!!</h1>
+    </div>	
+  )
 }
 ```
 
@@ -38,15 +38,15 @@ This would render a `div` and `h1` to the page, but in reality is doesn’t actu
 
 ```javascript
 var App = function App() {
-	return React.createElement(
-		"div",
-		null,
-		React.createElement(
-			"h1",
-			null,
-			"Hi!!"
-		)
-	);
+  return React.createElement(
+    "div",
+    null,
+    React.createElement(
+      "h1",
+      null,
+      "Hi!!"
+    )
+  );
 };
 ```
 
@@ -114,7 +114,7 @@ We can define our own interfaces to represent our data when a regular type doesn
 
 ```typescript
 interface Teacher {
-	name: string;
+  name: string;
   courses: string[];
 }
 ```
@@ -125,9 +125,9 @@ TypeScript has Generics as well, say we are creating a program for the new zoo w
 
 ```typescript
 class Enclosure<T> {
-	animals = [];
-	add = (animal: T) => this.animals.push(animal);
-	remove = (): T => this.animals.shift();
+  animals = [];
+  add = (animal: T) => this.animals.push(animal);
+  remove = (): T => this.animals.shift();
 }
 ```
 
@@ -135,13 +135,13 @@ Here we can create a generic enclosure for our zoo, and with it we can pass it a
 
 ```typescript
 class Zebra {
-	stripes: boolean;
-	legs: number;
+  stripes: boolean;
+  legs: number;
 }
   
 class Lion {
-	roar: boolean;
-	legs: number;
+  roar: boolean;
+  legs: number;
 }
 ```
 
@@ -231,12 +231,12 @@ One last things before we get into it. Styles in React Native are done not with 
 
 ```typescript
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 ```
 
@@ -330,7 +330,7 @@ It should now look something like this. We need to add some props to  these comp
 
 ```typescript
 <Button 
-	title="Search"
+  title="Search"
 />
 ```
 
@@ -356,22 +356,22 @@ You will notice a couple references to functions in here `this.search` and `this
 
 ```typescript
 class Home extends React.Component {
-	handleTextChange() {}
-	search() {}
+  handleTextChange() {}
+  search() {}
   render() {
     return (
-		<View>
-			<Text>Home</Text>
-			<TextInput 
-		  		value={this.state.search}
-				onChangeText={this.handleTextChange}
-				onSubmitEditing={this.search}
-			/>
-			<Button 
-				title="Search"
-				onPress={this.search}
-				color='white'
-			/>
+    <View>
+      <Text>Home</Text>
+      <TextInput 
+          value={this.state.search}
+        onChangeText={this.handleTextChange}
+        onSubmitEditing={this.search}
+      />
+      <Button 
+        title="Search"
+        onPress={this.search}
+        color='white'
+      />
       </View>
     )
   }
@@ -405,7 +405,7 @@ class Home extends React.Component<Props,State> {
   state = {
     search: ''
   }
-	//...
+  //...
 }
 ```
 
@@ -415,7 +415,7 @@ It doesn’t work! We have created a controlled input now, and in order to updat
 
 ```typescript
 handleTextChange(search: string) {
-	this.setState({search})
+  this.setState({search})
 }
 ```
 
@@ -423,7 +423,7 @@ Our function accepts a parameter we will call `search`, it will be of type `stri
 
 ```typescript
 this.setState({
-	search: search
+  search: search
 });
 ```
 
@@ -435,8 +435,8 @@ Inside of our class we will create a constructor and bind it in there, there are
 
 ```typescript
 constructor(props: Props) {
-	super(props);
-	this.handleTextChange = this.handleTextChange.bind(this);
+  super(props);
+  this.handleTextChange = this.handleTextChange.bind(this);
 }
 ```
 
@@ -479,24 +479,24 @@ We can then use these styles in our render, the render method should now look li
 
 ```diff
 render() {
-	return (
+  return (
 - 	<View>
 +		<View style={styles.container}>
 -			<Text>Art!!</Text>
 +			<Text style={styles.appTitle}>Art!!</Text>
-	    	<TextInput 
+        <TextInput 
 +		      style={styles.search}
-		      value={this.state.search}
-		      onChangeText={this.handleTextChange}
-		      onSubmitEditing={this.search}
-		    />
-		    <Button 
-		      title="Search"
-		      onPress={this.search}
-		      color='white'
-		    />
-	  </View>
-	)
+          value={this.state.search}
+          onChangeText={this.handleTextChange}
+          onSubmitEditing={this.search}
+        />
+        <Button 
+          title="Search"
+          onPress={this.search}
+          color='white'
+        />
+    </View>
+  )
 }
 ```
 
@@ -508,7 +508,7 @@ The `search` method will be pretty small, we will take the value of the `search`
 
 ```typescript
 search() {
-	const {search} = this.state;
+  const {search} = this.state;
   this.props.navigation.navigate('Search',{search})
 }
 ```
@@ -644,7 +644,7 @@ type ComposedProps = Props & NavigationScreenProps;
 
 class SearchResults extends React.Component<ComposedProps> {
   render() {
-		 const search = this.props.navigation.getParam('search');
+     const search = this.props.navigation.getParam('search');
 
     return (
       <View>
@@ -709,7 +709,7 @@ And when we make our `State` interface we will use it in there.
 
 ```typescript
 interface State {
-	searchResults: ArtObject[];
+  searchResults: ArtObject[];
 }
 ```
 
@@ -721,7 +721,7 @@ componentDidMount() {
   const search = this.props.navigation.getParam('search');
   fetch(`${API_URL}?q=${search}&key=${API_KEY}&format=json`)
     .then(res => res.json())
-	  .then(({artObjects:searchResults}) => this.setState({searchResults}))
+    .then(({artObjects:searchResults}) => this.setState({searchResults}))
 }
 ```
 
